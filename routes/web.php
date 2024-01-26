@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SatriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::resource("dashboard", SatriaController::class);
+
