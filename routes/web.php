@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\SatriaController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::resources([
+  'user' => UserController::class,
+  'stock' => StockController::class,
+]);
 
-Route::resource("dashboard", SatriaController::class);
+// Route::resource('stock', StockController::class);
 
