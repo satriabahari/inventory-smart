@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Dashboard extends Model
+class Stock extends Model
 {
-    // use HasFactory;
-    protected $table = "dashboard";
+    protected $table = "stock";
     protected $primaryKey = "id";
-    protected $fillable = ["name", "email", "gender", "des"];
+    protected $fillable = [
+        "name", 
+        "description", 
+        "stock"
+    ];
 }
