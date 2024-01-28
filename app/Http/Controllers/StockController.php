@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,15 @@ class StockController extends Controller
     public function index()
     {
         $datas = Stock::all();
-        return view("stock.index", ["datas" => $datas]);
+        // $datas = Stock::orderBy('id', 'asc');
+
+        // if(request()->has("search")){
+        //     $datasSearch = $datas->where("name", "like", "%" . request()->get("search") . "%")->get();
+        // } else {
+        //     $datasSearch = $datas->get();
+        // }
+
+        return view("product.index", ["datas" => $datas]);
     }
 
     /**
@@ -21,7 +30,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        return view("stock.create");
+        return view("product.create");
 
     }
 
@@ -52,7 +61,7 @@ class StockController extends Controller
     public function edit(string $id)
     {
         $data = Stock::find($id);
-        return view("stock.edit", ["data" => $data]);
+        return view("product.edit", ["data" => $data]);
     }
 
     /**

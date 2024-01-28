@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $datas = User::all();
-        return view("user.index", ["datas" => $datas]);
-    }
+    // public function index()
+    // {
+    //     $datas = Product::all();
+    //     return view("dashboard", ["datas" => $datas]);
+    // }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view("user.create");
+        //
     }
 
     /**
@@ -29,11 +30,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
-        return redirect("/user");
+        //
     }
 
     /**
@@ -49,8 +46,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data = User::find($id);
-        return view("user.edit", ["data" => $data]);
+        //
     }
 
     /**
@@ -58,11 +54,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        User::find($id)->update([
-            "email" => $request->email,
-            "password" => $request->password,
-        ]);
-        return redirect("/user");
+        //
     }
 
     /**
@@ -70,7 +62,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        User::find($id)->delete();
-        return redirect("/user");
+        //
     }
 }
