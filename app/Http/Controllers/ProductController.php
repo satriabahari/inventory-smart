@@ -13,7 +13,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $datas = Product::all();
+        // $datas = Product::all();
+        // return view("product.index", ["datas" => $datas]);
+        $datas = Product::orderBy('id', 'asc');
+
+        if(request()->has("search")){
+            $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
+        } else {
+            if($datas->count() > 10) {
+                $datas = $datas->paginate(9);;
+            } else {
+                $datas = $datas->get();
+            }
+        }
+
         return view("product.index", ["datas" => $datas]);
     }
 
@@ -22,7 +35,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view("product.create");
     }
 
     /**
@@ -30,7 +43,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create([
+            "name" => $request->name,
+            "description" => $request->description,
+            "stock" => $request->stock,
+        ]);
+        return redirect("/product");
     }
 
     /**
@@ -46,7 +64,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Product::find($id);
+        return view("product.edit", ["data" => $data]);
     }
 
     /**
@@ -54,7 +73,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Product::find($id)->update([
+            "name" => $request->name,
+            "description" => $request->description,
+            "stock" => $request->stock,
+        ]);
+        return redirect("/product");
     }
 
     /**
@@ -62,6 +86,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Product::find($id)->delete();
+        return redirect("/product");
     }
 }

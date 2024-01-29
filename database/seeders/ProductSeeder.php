@@ -13,22 +13,24 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("product")->insert([
-            'name' => "baju",
-            'description' => "baju baru",
-            'stock' => 1
-        ]);
-
-        DB::table("product")->insert([
-            'name' => "celana",
-            'description' => "celana baru",
-            'stock' => 2
-        ]);
-
-        DB::table("product")->insert([
-            'name' => "sepatu",
-            'description' => "sepatu baru",
-            'stock' => 3
-        ]);
+        for($i = 0; $i < 3; $i++) {
+            DB::table("product")->insert([
+                'name' => "baju",
+                'description' => "baju baru",
+                'stock' => 1
+            ]);
+    
+            DB::table("product")->insert([
+                'name' => "celana",
+                'description' => "celana baru",
+                'stock' => 2
+            ]);
+    
+            DB::table("product")->insert([
+                'name' => "sepatu",
+                'description' => "sepatu baru",
+                'stock' => 3
+            ]);
+        } 
     }
 }
