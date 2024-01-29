@@ -13,23 +13,34 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 3; $i++) {
-            DB::table("product")->insert([
+        for($i = 0; $i < 5; $i++) {
+            DB::table("products")->insert([
                 'name' => "baju",
                 'description' => "baju baru",
-                'stock' => 1
+                'cattegory' => "baju",
+                'price' => 100000,
+                'stock' => 10
             ]);
-    
-            DB::table("product")->insert([
+            DB::table("products")->insert([
                 'name' => "celana",
                 'description' => "celana baru",
-                'stock' => 2
+                'cattegory' => "celana",
+                'price' => 300000,
+                'stock' => 20
             ]);
-    
-            DB::table("product")->insert([
+            DB::table("products")->insert([
                 'name' => "sepatu",
                 'description' => "sepatu baru",
-                'stock' => 3
+                'cattegory' => "sepatu",
+                'price' => 350000,
+                'stock' => 25
+            ]);
+            DB::table("products")->insert([
+                'name' => "topi",
+                'description' => "topi baru",
+                'cattegory' => "topi",
+                'price' => 50000,
+                'stock' => 15
             ]);
         } 
     }

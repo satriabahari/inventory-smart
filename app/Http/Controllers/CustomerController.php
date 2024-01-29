@@ -3,19 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $datas = Product::all();
-        // return view("product.index", ["datas" => $datas]);
-        $datas = Product::orderBy('id', 'asc');
+        $datas = Customer::orderBy('id', 'asc');
 
         if(request()->has("search")){
             $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
@@ -27,7 +25,7 @@ class ProductController extends Controller
             }
         }
 
-        return view("product.index", ["datas" => $datas]);
+        return view("customer.index", ["datas" => $datas]);
     }
 
     /**
@@ -35,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("product.create");
+        return view("customer.create");
+
     }
 
     /**
@@ -43,14 +42,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create([
+        Customer::create([
             "name" => $request->name,
-            "description" => $request->description,
-            "cattegory" => $request->cattegory,
-            "price" => $request->price,
-            "stock" => $request->stock,
+            "address" => $request->address, 
+            "email" => $request->email,
+            "phone" => $request->phone
         ]);
-        return redirect("/product");
+        return redirect("/costumer");
     }
 
     /**
@@ -66,8 +64,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Product::find($id);
-        return view("product.edit", ["data" => $data]);
+        $data = Customer::find($id);
+        return view("customer.edit", ["data" => $data]);
     }
 
     /**
@@ -75,14 +73,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Product::find($id)->update([
+        Customer::find($id)->update([
             "name" => $request->name,
-            "description" => $request->description,
-            "cattegory" => $request->cattegory,
-            "price" => $request->price,
-            "stock" => $request->stock,
+            "address" => $request->address, 
+            "email" => $request->email,
+            "phone" => $request->phone
         ]);
-        return redirect("/product");
+        return redirect("/costumer");
     }
 
     /**
@@ -90,7 +87,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        Product::find($id)->delete();
-        return redirect("/product");
+        Customer::find($id)->delete();
+        return redirect("/costumer");
     }
 }

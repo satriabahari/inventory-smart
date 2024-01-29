@@ -20,6 +20,24 @@
                     <textarea name="description" id="description" class="w-full border-gray-300 rounded-md p-2" rows="4" required></textarea>
                 </div>
     
+                <!-- cattegory -->
+                <div class="mb-6">
+                    <label for="cattegory" class="block text-gray-600 font-medium mb-2">Cattegory</label>
+                    {{-- <input type="number" name="cattegory" id="cattegory" class="w-full border-gray-300 rounded-md p-2" required> --}}
+                    <select name="cattegory" id="cattegory" class="w-full border-gray-300 rounded-md p-2" required>
+                        <option value="baju">Baju</option>
+                        <option value="celana">Celana</option>
+                        <option value="sepatu">Sepatu</option>
+                        <option value="topi">Topi</option>
+                    </select>
+                </div>
+
+                <!-- price -->
+                <div class="mb-6">
+                    <label for="price" class="block text-gray-600 font-medium mb-2">Price</label>
+                    <input type="number" name="price" id="price" class="w-full border-gray-300 rounded-md p-2" required>
+                </div>
+
                 <!-- Stock -->
                 <div class="mb-6">
                     <label for="stock" class="block text-gray-600 font-medium mb-2">Stock</label>
