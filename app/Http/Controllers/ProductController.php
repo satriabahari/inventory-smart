@@ -11,11 +11,11 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    // public function index()
-    // {
-    //     $datas = Product::all();
-    //     return view("dashboard", ["datas" => $datas]);
-    // }
+    public function index()
+    {
+        $datas = Product::all();
+        return view("product.index", ["datas" => $datas]);
+    }
 
     /**
      * Show the form for creating a new resource.
