@@ -46,6 +46,8 @@ class ProductController extends Controller
         Product::create([
             "name" => $request->name,
             "description" => $request->description,
+            "cattegory" => $request->cattegory,
+            "price" => $request->price,
             "stock" => $request->stock,
         ]);
         return redirect("/product");
@@ -76,6 +78,8 @@ class ProductController extends Controller
         Product::find($id)->update([
             "name" => $request->name,
             "description" => $request->description,
+            "cattegory" => $request->cattegory,
+            "price" => $request->price,
             "stock" => $request->stock,
         ]);
         return redirect("/product");
