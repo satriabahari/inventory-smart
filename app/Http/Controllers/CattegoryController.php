@@ -13,7 +13,7 @@ class CattegoryController extends Controller
      */
     public function index()
     {
-        $datas = Cattegory::all();
+        // return Cattegory::all();
     }
 
     /**
