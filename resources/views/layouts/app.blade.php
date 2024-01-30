@@ -17,27 +17,34 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-            <div>
-                @include('layouts.sidebar')
-            </div>
-            <div class="w-full">
-                @include('layouts.navigation')
+    <body class="font-sans antialiased"  x-data="{ darkMode: false }" x-init="
+    if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      localStorage.setItem('darkMode', JSON.stringify(true));
+    }
+    darkMode = JSON.parse(localStorage.getItem('darkMode'));
+    $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" x-cloak>
+        <div x-bind:class="{'dark' : darkMode === true}" >
+            <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
+                <div>
+                    @include('layouts.sidebar')
+                </div>
+                <div class="w-full min-h-screen">
+                    @include('layouts.navigation')
 
-                <!-- Page Heading -->
-                @if (isset($header))
-                    <header class="bg-white dark:bg-gray-800 shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endif
+                    <!-- Page Heading -->
+                    {{-- @if (isset($header))
+                        <header class="bg-white dark:bg-gray-800 shadow">
+                            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                                {{ $header }}
+                            </div>
+                        </header>
+                    @endif --}}
 
-                <!-- Page Content -->
-                <main>
-                    {{ $slot }}
-                </main>
+                    <!-- Page Content -->
+                    <main class="">
+                        {{ $slot }}
+                    </main>
+                </div>
             </div>
         </div>
     </body>
