@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cattegory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,9 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view("product.create");
+    {   
+        $cattegories = Cattegory::all();
+        return view("product.create", ["cattegories" => $cattegories]);
     }
 
     /**
