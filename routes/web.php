@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CattegoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockController;
@@ -32,5 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('product', ProductController::class);
+Route::resource('customer', CustomerController::class);
+Route::resource('cattegory', CattegoryController::class);
 
 require __DIR__.'/auth.php';
