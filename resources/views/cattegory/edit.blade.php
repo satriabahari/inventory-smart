@@ -5,8 +5,9 @@
             <h1 class="text-2xl font-bold mb-6 dark:text-gray-50">Edit Data</h1>
     
             <!-- Form -->
-            <form action="{{ route('cattegory.store') }}" method="POST">
+            <form action="{{ route('cattegory.update', $data->id) }}" method="POST">
                 @csrf
+                @method('PUT')
     
                 <!-- Nama -->
                 <div class="mb-4">
