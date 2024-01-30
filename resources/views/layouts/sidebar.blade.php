@@ -32,6 +32,16 @@
           <x-button-new/>
         </li>
       </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <a href="{{route("cattegory.index")}}">Cattegory</a>
+          </div>
+          <x-button-new/>
+        </li>
+      </ul>
     </nav>
   </div>
 
