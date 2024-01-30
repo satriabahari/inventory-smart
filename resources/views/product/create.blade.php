@@ -25,10 +25,13 @@
                     <label for="cattegory" class="block text-gray-600 font-medium mb-2">Cattegory</label>
                     {{-- <input type="number" name="cattegory" id="cattegory" class="w-full border-gray-300 rounded-md p-2" required> --}}
                     <select name="cattegory" id="cattegory" class="w-full border-gray-300 rounded-md p-2" required>
-                        <option value="baju">Baju</option>
+                        {{-- <option value="baju">Baju</option>
                         <option value="celana">Celana</option>
                         <option value="sepatu">Sepatu</option>
-                        <option value="topi">Topi</option>
+                        <option value="topi">Topi</option> --}}
+                        @foreach ($cattegories as $item)
+                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
