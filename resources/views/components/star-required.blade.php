@@ -1,0 +1,1 @@
+<span class="text-red-400 ml-1">*</span>

@@ -1,14 +1,11 @@
 <x-app-layout>
   <section class="h-full p-4 space-y-4">
     <div class="flex justify-between">
-      {{-- <x-search/> --}}
-      <button class="py-2 text-sm text-neutral-50 px-4 rounded-md bg-blue-500">
-        <a href="{{route("cattegory.create")}}">Create</a>
-      </button>
+      <x-button route="cattegory.create" color="blue" text="Create" icon="fa-plus"/>
     </div>
     @if (count($datas) > 0)
       <div class="flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2">
-        <table class="w-full table-auto">
+        <table class="w-full table-fixed">
           <thead>
             <tr>
               <th class="text-neutral-900 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-50 py-1 px-4 text-start text-sm">No</th>
@@ -22,13 +19,11 @@
               <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->id }}</td>
               <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->name }}</td>
               <td class="text-neutral-50 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-50 py-1 px-4 flex space-x-4">
-                <button class="py-2 px-4 rounded-lg bg-green-500 text-sm">
-                  <a href="{{route("cattegory.edit", $data->id)}}">Edit</a>
-                </button>
+                <x-button :route="route('cattegory.edit', $data->id)" color="green" text="Edit" icon="fa-pen-to-square"/>
                 <form action="{{route("cattegory.destroy", $data->id)}}" method="POST">
                   @csrf
                   @method("DELETE")
-                  <button class="py-2 px-4 rounded-lg bg-red-500 text-sm" >Delete</button>
+                  <x-button :route="route('cattegory.destroy', $data->id)" color="red" text="Delete" icon="fa-trash"/>
                 </form>
               </td>
             </tr>
