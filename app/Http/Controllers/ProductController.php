@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cattegory;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -18,7 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $datas = Product::orderBy('id', 'asc');
+        /*$datas = Product::orderBy('id', 'asc');
 
         if(request()->has("search")){
             $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
@@ -28,9 +30,9 @@ class ProductController extends Controller
             } else {
                 $datas = $datas->get();
             }
-        }
-
-        return view("product.index", ["datas" => $datas]);
+        }*/
+        $datas = Product::with('cattegory')->get();
+        return view('product.index', compact('datas'));
     }
 
     /**
@@ -38,8 +40,8 @@ class ProductController extends Controller
      */
     public function create()
     {   
-        $cattegories = Cattegory::all();
-        return view("product.create", ["cattegories" => $cattegories]);
+        $categories = Cattegory::all();
+        return view('product.create', compact('categories'));
     }
 
     /**
@@ -47,14 +49,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "cattegory" => $request->cattegory,
-            "price" => $request->price,
-            "stock" => $request->stock,
+        $request->validate([
+            'cattegory_id' => 'required|exists:cattegories,id',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
         ]);
-        return redirect("/product");
+
+        Product::create($request->all());
+
+        return redirect()->route('product.index')->with('success', 'Product created successfully');
     }
 
     /**
@@ -70,9 +75,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Product::find($id);
+        $data = Product::findOrFail($id);
         $cattegories = Cattegory::all();
-        return view("product.edit", ["data" => $data, "cattegories" => $cattegories]);
+        
+        return view('product.edit', compact('data', 'cattegories'));
     }
 
     /**
@@ -80,14 +86,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Product::find($id)->update([
-            "name" => $request->name,
-            "description" => $request->description,
-            "cattegory" => $request->cattegory,
-            "price" => $request->price,
-            "stock" => $request->stock,
+        $data = Product::findOrFail($id);
+        
+
+        $request->validate([
+            'cattegory_id' => 'required|exists:cattegories,id',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
         ]);
-        return redirect("/product");
+
+        $data->update($request->all());
+
+        DB::listen(function ($query) {
+            dump($query->sql, $query->bindings);
+        });
+
+        return redirect()->route('product.index')->with('success', 'Product updated successfully');
     }
 
     /**
