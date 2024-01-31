@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\ProductsChart;
 use App\Http\Controllers\Controller;
 use App\Models\Cattegory;
 use App\Models\Product;
@@ -9,13 +10,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function chart(ProductsChart $chart) {
+        return view('dashboard', ['chart' => $chart->build()]);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $datas = Product::all();
-        // return view("product.index", ["datas" => $datas]);
         $datas = Product::orderBy('id', 'asc');
 
         if(request()->has("search")){
@@ -69,7 +71,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $data = Product::find($id);
-        return view("product.edit", ["data" => $data]);
+        $cattegories = Cattegory::all();
+        return view("product.edit", ["data" => $data, "cattegories" => $cattegories]);
     }
 
     /**

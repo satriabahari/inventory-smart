@@ -13,5 +13,22 @@
                 </div>
             </div>
         </div>
+        <div class="grid grid-cols-4 gap-x-4">
+            <x-statistic title="Customers" count="75" color="blue" icon="fa-circle-user" />
+            <x-statistic title="Products" count="60" color="red" icon="fa-solid fa-box" />
+            <x-statistic title="Users" count="80" color="green" icon="fa-circle-user" />
+            <x-statistic title="Cattegory" count="4" color="blue" icon="fa-circle-user" />
+        </div>
+        <div class="container px-4 mx-auto">
+
+            <div class="p-6 m-20 bg-white rounded shadow">
+                {!! $chart->container() !!}
+            </div>
+        
+        </div>
+        
+        <script src="{{ $chart->cdn() }}"></script>
+        
+        {{ $chart->script() }}
     </div>
 </x-app-layout>
