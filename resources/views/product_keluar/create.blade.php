@@ -50,5 +50,13 @@
                 </form>
             </div>
         </div>
+        @if(session('error'))
+            <script>
+                // JavaScript to show alert if stock is not sufficient
+                document.addEventListener('DOMContentLoaded', function () {
+                    alert("{{ session('error') }}");
+                });
+            </script>
+        @endif
     </section>
 </x-app-layout>
