@@ -1,7 +1,7 @@
 <x-app-layout>
   <section class="h-full p-4 space-y-4">
     <div class="flex justify-between">
-      <x-button route="cattegory.create" color="blue" text="Create" icon="fa-plus"/>
+      <x-button :route="route('cattegory.create')" color="blue" text="Create" icon="fa-plus"/>
     </div>
     @if (count($datas) > 0)
       <div class="flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2">

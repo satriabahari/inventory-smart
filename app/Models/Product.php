@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table = "products";
-    protected $primaryKey = "id";
-    protected $fillable = [
-        "name", 
-        "description", 
-        "cattegory",
-        "price",
-        "stock"
-    ];
+    protected $fillable = ['cattegory_id','name','description','price','stock'];
+
+    protected $hidden = ['created_at','updated_at'];
+
+    public function cattegory()
+    {
+        return $this->belongsTo(Cattegory::class);
+    }
 }
