@@ -10,7 +10,7 @@
         <li class="flex items-center space-x-2 justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
             <i class="fa-brands fa-microsoft"></i>
-            <a href="{{route("dashboard")}}">Dashboard</a>
+            <a href="{{route("dashboard.index")}}">Dashboard</a>
           </div>
         </li>
       </ul>

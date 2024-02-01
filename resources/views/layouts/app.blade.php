@@ -25,10 +25,10 @@
     $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" x-cloak>
         <div x-bind:class="{'dark' : darkMode === true}" >
             <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-                <div>
+                <div class="fixed">
                     @include('layouts.sidebar')
                 </div>
-                <div class="w-full min-h-screen">
+                <div class="w-full min-h-screen ml-[225px]">
                     @include('layouts.navigation')
 
                     <!-- Page Heading -->
