@@ -23,11 +23,42 @@
           <x-button-new/>
         </li>
       </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <a href="{{route("product_masuk.index")}}">Product Masuk</a>
+          </div>
+          <x-button-new/>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <a href="{{route("product_keluar.index")}}">Product Keluar</a>
+          </div>
+          <x-button-new/>
+        </li>
+      </ul>
+
       <ul>
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
             <i class="fa-solid fa-user"></i>
             <a href="{{route("customer.index")}}">Customer</a>
+          </div>
+          <x-button-new/>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-user"></i>
+            <a href="{{route("supplier.index")}}">Supplier</a>
           </div>
           <x-button-new/>
         </li>
