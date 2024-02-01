@@ -15,15 +15,23 @@ class CattegorySeeder extends Seeder
     {
         DB::table("cattegories")->insert([
             'name' => "baju",
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table("cattegories")->insert([
             'name' => "celana",
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table("cattegories")->insert([
             'name' => "sepatu",
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
         DB::table("cattegories")->insert([
             'name' => "topi",
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }

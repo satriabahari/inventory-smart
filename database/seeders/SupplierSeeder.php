@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CustomerSeeder extends Seeder
+class SupplierSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class CustomerSeeder extends Seeder
     {
         for($i = 0; $i < 5; $i++) {
 
-            DB::table("customers")->insert([
+            DB::table("suppliers")->insert([
                 'name' => "satria",
                 'address' => "Mendalo Asri",
                 'email' => "satria@gmail.com",
@@ -23,7 +23,7 @@ class CustomerSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            DB::table("customers")->insert([
+            DB::table("suppliers")->insert([
                 'name' => "nurman",
                 'address' => "Talang Banjar",
                 'email' => "nurman@gmail.com",
@@ -31,7 +31,7 @@ class CustomerSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            DB::table("customers")->insert([
+            DB::table("suppliers")->insert([
                 'name' => "zidan",
                 'address' => "Mayang",
                 'email' => "zidan@gmail.com",
