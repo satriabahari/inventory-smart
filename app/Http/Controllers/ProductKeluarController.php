@@ -49,6 +49,15 @@ class ProductKeluarController extends Controller
         return redirect()->route('product_keluar.index')->with('success', 'Product Keluar created successfully');
     }
 
+    public function edit($id)
+    {
+        $entry = Product_Keluar::findOrFail($id);
+        $products = Product::all();
+        $customers = Customer::all();
+
+        return view('product_keluar.edit', compact('entry', 'products', 'customers'));
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
