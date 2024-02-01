@@ -30,23 +30,32 @@ class ProductKeluarController extends Controller
             'stock' => 'required|numeric',
             'tanggal' => 'required|date',
         ]);
-    
+
         // Validasi stok mencukupi
         $product = Product::find($request->product_id);
-    
+
         if (!$product || $request->stock > $product->stock) {
             return redirect()->route('product_keluar.create')->with('error', 'Stock tidak mencukupi.');
         }
-    
+
         // Jika stok mencukupi, simpan data produk keluar
         $entry = Product_Keluar::create($request->all());
-    
+
         // Kurangi stok produk
         $product->update([
             'stock' => $product->stock - $request->stock,
         ]);
-    
+
         return redirect()->route('product_keluar.index')->with('success', 'Product Keluar created successfully');
+    }
+
+    public function edit($id)
+    {
+        $entry = Product_Keluar::findOrFail($id);
+        $products = Product::all();
+        $customers = Customer::all();
+
+        return view('product_keluar.edit', compact('entry', 'products', 'customers'));
     }
 
     public function update(Request $request, $id)
@@ -57,21 +66,27 @@ class ProductKeluarController extends Controller
             'stock' => 'required|numeric|min:1',
             'tanggal' => 'required|date',
         ]);
-
+    
         $entry = Product_Keluar::findOrFail($id);
-
+    
         // Update stok di tabel 'products'
         $product = Product::find($entry->product_id);
         if ($product) {
             // Tambahkan stok yang lama kembali
             $product->stock += $entry->stock;
+    
+            // Validasi stok mencukupi
+            if ($request->stock > $product->stock) {
+                return redirect()->route('product_keluar.edit', $id)->with('error', 'Stock tidak mencukupi.');
+            }
+    
             // Kurangkan stok yang baru
             $product->stock -= $request->stock;
             $product->save();
         }
-
+    
         $entry->update($request->all());
-
+    
         return redirect()->route('product_keluar.index')->with('success', 'Product Keluar updated successfully');
     }
 
