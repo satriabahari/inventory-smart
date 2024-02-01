@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CattegoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockController;
@@ -24,15 +25,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-Route::get('/dashboard', [ProductController::class, 'chart'])->name('dashboard');
+// Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [ProductController::class, 'productChart'])->name('dashboard');
+// Route::get('/dashboard', [ProductController::class, 'statsChart'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -40,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('dashboard', DashboardController::class)->middleware(['auth', 'verified']);
 Route::resource('product', ProductController::class);
 Route::resource('customer', CustomerController::class);
 Route::resource('cattegory', CattegoryController::class);

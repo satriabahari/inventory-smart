@@ -1,6 +1,6 @@
-@props(['title', 'count', 'color', 'icon'])
+@props(['title', 'count', 'color', 'icon', 'iconColor'])
 
-<div class="bg-gray-50 rounded-lg w-fit p-2 dark:bg-gray-700">
+<div class="bg-gray-50 rounded-lg w-full p-2 dark:bg-gray-700">
   {{-- <div class="grid grid-cols-2"> --}}
     <div class="flex justify-between">
       {{-- <div class="w-fit h-fit rounded-full bg-gray-300 dark:bg-gray-500">
@@ -14,23 +14,23 @@
         <h5 class="text-xl font-semibold text-gray-900 dark:text-gray-50">{{$count}}</h5>
       </div>
     </div>
-    <div class="flex justify-between gap-x-6">
+    <div class="flex justify-between gap-x-4">
       <div class="flex space-x-1 items-end">
-        <span class="w-2 h-4 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-6 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-8 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-5 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-7 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-6 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-4 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-10 rounded-t-full bg-{{$color}}-500"></span>
-        <span class="w-2 h-5 rounded-t-full bg-{{$color}}-500"></span>
+        <span class="w-1.5 h-4 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-6 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-8 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-5 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-7 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-6 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-4 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-10 rounded-t-full {{$color}}"></span>
+        <span class="w-1.5 h-5 rounded-t-full {{$color}}"></span>
       </div>
       <div class="flex space-x-2 items-end">
         {{-- <div class="h-fit w-fit p-2 rounded-full border border-gray-500 dark:border-gray-300">
           <i class="fa-solid fa-arrow-up"></i>
         </div> --}}
-        <div class="text-{{$color}}-500 ">
+        <div class="{{$iconColor}}">
           <i class="fa-solid fa-circle-arrow-up fa-lg"></i>
         </div>
         <h5 class="text-xs text-gray-500 dark:text-gray-300">85% (30 days)</h5>

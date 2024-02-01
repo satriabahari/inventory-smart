@@ -13,13 +13,14 @@ class ProductsChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\LineChart
-    {
-        return $this->chart->lineChart()
-            ->setTitle('Sales during 2021.')
-            ->setSubtitle('Physical sales vs Digital sales.')
-            ->addData('Physical sales', [40, 93, 35, 42, 18, 82, 80, 1])
-            ->addData('Digital sales', [70, 29, 77, 28, 55, 45, 5 ,7])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart{
+        return $this->chart->donutChart()
+            ->setTitle('Top 3 scorers of the team.')
+            ->setSubtitle('Season 2021.')
+            ->addData([
+                \app\Models\Product::count(),
+                \app\Models\Customer::count(),
+            ])
+            ->setLabels(['Products', 'Customers']);
     }
 }
