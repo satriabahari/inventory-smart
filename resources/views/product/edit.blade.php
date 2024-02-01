@@ -24,9 +24,9 @@
                     <!-- cattegory -->
                     <div class=" grid grid-cols-[1fr_2fr] items-center ">
                         <label for="cattegory" class="block text-gray-500 dark:text-gray-300 font-medium mb-2">Cattegory<x-star-required/></label>
-                        <select name="cattegory" id="cattegory" class="w-full border-gray-300 dark:bg-gray-700 dark:text-gray-50 bg-gray-100 rounded-md p-2"  required>
-                            @foreach ($cattegories as $item)
-                                <option value="{{ $item->name }}" class="bg-gray-50 text-gray-500 dark:text-gray-300 hover:bg-gray-200">{{ $item->name }}</option>
+                        <select name="cattegory_id" id="cattegory" class="w-full border-gray-300 dark:bg-gray-700 dark:text-gray-50 bg-gray-100 rounded-md p-2"  required>
+                            @foreach ($cattegories as $cattegory)
+                                <option value="{{ $cattegory->id }}" class="bg-gray-50 text-gray-500 dark:text-gray-300 hover:bg-gray-200">{{ $cattegory->name }}</option>
                             @endforeach
                         </select>
                     </div>
