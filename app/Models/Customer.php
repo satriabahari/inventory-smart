@@ -7,12 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = "customers";
-    protected $primaryKey = "id";
-    protected $fillable = [
-        "name", 
-        "address", 
-        "email",
-        "phone"
-    ];
+    protected $fillable = ['name', 'address', 'email', 'phone'];
+
+    protected $hidden = ['created_at', 'updated_at'];
 }
