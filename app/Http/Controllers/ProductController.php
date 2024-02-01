@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\ProductsChart;
+use App\Charts\StatsChart;
 use App\Http\Controllers\Controller;
 use App\Models\Cattegory;
 use App\Models\Product;
@@ -10,9 +11,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function chart(ProductsChart $chart) {
-        return view('dashboard', ['chart' => $chart->build()]);
-    }
     /**
      * Display a listing of the resource.
      */
