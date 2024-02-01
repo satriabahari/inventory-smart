@@ -6,6 +6,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductMasukController;
+use App\Http\Controllers\ProductKeluarController;
+use App\Http\Controllers\SupplierController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -40,5 +43,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('product', ProductController::class);
 Route::resource('customer', CustomerController::class);
 Route::resource('cattegory', CattegoryController::class);
+Route::resource('product_masuk', ProductMasukController::class);
+Route::resource('product_keluar', ProductKeluarController::class);
+Route::resource('supplier', SupplierController::class);
 
 require __DIR__.'/auth.php';
