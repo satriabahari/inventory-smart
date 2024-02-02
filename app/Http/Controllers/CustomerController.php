@@ -13,7 +13,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        /*$datas = Customer::orderBy('id', 'asc');
+        $datas = Customer::orderBy('id', 'asc');
 
         if(request()->has("search")){
             $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
@@ -23,9 +23,8 @@ class CustomerController extends Controller
             } else {
                 $datas = $datas->get();
             }
-        }*/
-        $data = Customer::all();
-        return view('customer.index', compact('data'));
+        }
+        return view('customer.index', ["datas" => $datas]);
     }
 
     /**
@@ -42,16 +41,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
+        // $request->validate([
+        //     'name' => 'required',
+        //     'address' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        // ]);
+
+        Customer::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
 
-        Customer::create($request->all());
-
-        return redirect()->route('customer.index')->with('success', 'Customer created successfully');
+        return redirect('/customer');
     }
 
     /**
@@ -67,8 +71,8 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        $entry = Customer::findOrFail($id);
-        return view('customer.edit', compact('entry'));
+        $data = Customer::find($id);
+        return view('customer.edit', ['data' => $data]);
     }
 
     /**
@@ -76,17 +80,21 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
+        // $request->validate([
+        //     'name' => 'required',
+        //     'address' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        // ]);
+
+        Customer::find($id)->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'email' => $request->email,
+            'phone' => $request->phone,
         ]);
 
-        $entry = Customer::findOrFail($id);
-        $entry->update($request->all());
-
-        return redirect()->route('customer.index')->with('success', 'Customer updated successfully');
+        return redirect('/customer');
     }
 
     /**
@@ -94,9 +102,7 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        $entry = Customer::findOrFail($id);
-        $entry->delete();
-
-        return redirect()->route('customer.index')->with('success', 'Customer deleted successfully');
+        Customer::find($id)->delete();
+        return redirect('customer.index');
     }
 }

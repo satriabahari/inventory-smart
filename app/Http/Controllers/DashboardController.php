@@ -2,30 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Charts\ProductsChart;
-use App\Charts\StatsChart;
+use App\Charts\DonutChart;
+use App\Charts\PolarAreaChart;
 use App\Http\Controllers\Controller;
-use App\Models\Cattegory;
+use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Inbound;
+use App\Models\Outbound;
 use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(ProductsChart $productChart, StatsChart $statsChart)
+    public function index(DonutChart $donutChart, PolarAreaChart $polarAreaChart)
     {
-        $cattegories = Cattegory::all();
+        $categories = Category::all();
         $products = Product::all();
         $customers = Customer::all();
-        $users = User::all();
+        $suppliers = Supplier::all();
+        $inbounds = Inbound::all();
+        $outbounds = Outbound::all();
         return view('dashboard', [
-            "productChart" => $productChart->build(),
-            "statsChart" => $statsChart->build(),
-            "cattegories" => $cattegories,
+            "donutChart" => $donutChart->build(),
+            "polarAreaChart" => $polarAreaChart->build(),
+            "categories" => $categories,
             "products" => $products,
             "customers" => $customers,
-            "users" => $users
+            "suppliers" => $suppliers,
+            "inbounds" => $inbounds,
+            "outbounds" => $outbounds
         ]);
     }
 

@@ -9,8 +9,21 @@ class SupplierController extends Controller
 {
     public function index()
     {
-        $suppliers = Supplier::all();
-        return view('supplier.index', compact('suppliers'));
+        // $datas = Supplier::all();
+        // return view('supplier.index', compact('datas'));
+
+        $datas = Supplier::orderBy('id', 'asc');
+
+        if(request()->has("search")){
+            $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
+        } else {
+            if($datas->count() > 10) {
+                $datas = $datas->paginate(9);;
+            } else {
+                $datas = $datas->get();
+            }
+        }
+        return view('supplier.index', ["datas" => $datas]);
     }
 
     public function create()
@@ -21,12 +34,12 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         // Validasi input
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string',
-            'email' => 'required|email|unique:suppliers,email',
-            'phone' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'address' => 'required|string',
+        //     'email' => 'required|email|unique:suppliers,email',
+        //     'phone' => 'required|string',
+        // ]);
 
         // Simpan data Supplier
         Supplier::create([
@@ -36,38 +49,39 @@ class SupplierController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('supplier.index')->with('success', 'Supplier created successfully');
+        return redirect('/supplier');
     }
 
-    public function edit(Supplier $supplier)
+    public function edit(string $id)
     {
-        return view('supplier.edit', compact('supplier'));
+        $data = Supplier::find($id);
+        return view('supplier.edit', ['data' => $data]);
     }
 
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, string $id)
     {
         // Validasi input
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string',
-            'email' => 'required|email|unique:suppliers,email,' . $supplier->id,
-            'phone' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'address' => 'required|string',
+        //     'email' => 'required|email|unique:suppliers,email,' . $supplier->id,
+        //     'phone' => 'required|string',
+        // ]);
 
         // Update data Supplier
-        $supplier->update([
+        Supplier::find($id)->update([
             'name' => $request->name,
             'address' => $request->address,
             'email' => $request->email,
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('supplier.index')->with('success', 'Supplier updated successfully');
+        return redirect('/supplier');
     }
 
-    public function destroy(Supplier $supplier)
+    public function destroy(string $id)
     {
-        $supplier->delete();
-        return redirect()->route('supplier.index')->with('success', 'Supplier deleted successfully');
+        Supplier::find($id)->delete();
+        return redirect('supplier.index');
     }
 }
