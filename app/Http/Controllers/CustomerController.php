@@ -103,6 +103,6 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
         Customer::find($id)->delete();
-        return redirect('customer.index');
+        return redirect('/customer');
     }
 }

@@ -22,8 +22,8 @@
         
                     <!-- Category -->
                     <div class="grid grid-cols-[1fr_2fr] items-center">
-                    <label for="cattegory_id" class="block text-gray-500 dark:text-gray-300 font-medium mb-2">Category<x-star-required/></label>
-                        <select name="cattegory_id" id="cattegory_id" class="w-full border-gray-300 dark:bg-gray-700 dark:text-gray-50 bg-gray-100 rounded-md p-2" required>
+                    <label for="category_id" class="block text-gray-500 dark:text-gray-300 font-medium mb-2">Category<x-star-required/></label>
+                        <select name="category_id" id="category_id" class="w-full border-gray-300 dark:bg-gray-700 dark:text-gray-50 bg-gray-100 rounded-md p-2" required>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}" class="bg-gray-50 text-gray-500 dark:text-gray-300 hover:bg-gray-200">{{ $category->name }}</option>
                             @endforeach
