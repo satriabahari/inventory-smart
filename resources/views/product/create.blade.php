@@ -46,7 +46,7 @@
                     <div>
                         <button type="submit" class="flex items-center space-x-2 bg-blue-500 text-gray-50 dark:text-gray-200 py-2 px-4 rounded-md ">
                             <p>Create</p>
-                            <i class="fa-regular fa-circle-plus"></i>
+                            <i class="fa-solid fa-circle-check"></i>
                         </button>
                     </div>
                 </form>

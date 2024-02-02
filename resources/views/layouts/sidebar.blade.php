@@ -1,15 +1,16 @@
+
 <aside class="grid grid-rows-[4rem_3fr_1fr] text-gray-900 min-h-screen w-[225px] px-6 border-r border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-gray-50">
   <div class="flex justify-center items-center">
     <h1 class="text-2xl uppercase">Study Club</h1>
   </div>
 
   <div class="text-sm space-y-4 flex flex-col justify-center">
-    <h3 class="uppercase text-gray-900 dark:text-gray-50">Menu</h3>
+    <h3 class="uppercase text-gray-900 dark:text-gray-50">Main Menu</h3>
     <nav class="space-y-6 ">
       <ul>
         <li class="flex items-center space-x-2 justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
-            <i class="fa-brands fa-microsoft"></i>
+            <i class="fa-solid fa-house"></i>
             <a href="{{route("dashboard.index")}}">Dashboard</a>
           </div>
         </li>
@@ -18,39 +19,26 @@
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
             <i class="fa-solid fa-boxes-stacked"></i>
-            <a href="{{route("product.index")}}">Product</a>
+            <a href="{{route("product.index")}}">Products</a>
           </div>
-          <x-button-new/>
         </li>
       </ul>
 
       <ul>
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
-            <i class="fa-solid fa-boxes-stacked"></i>
-            <a href="{{route("product_masuk.index")}}">Product Masuk</a>
+            <i class="fa-solid fa-list"></i>
+            <a href="{{route("category.index")}}">Categories</a>
           </div>
-          <x-button-new/>
         </li>
       </ul>
 
       <ul>
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
-            <i class="fa-solid fa-boxes-stacked"></i>
-            <a href="{{route("product_keluar.index")}}">Product Keluar</a>
+            <i class="fa-solid fa-users"></i>
+            <a href="{{route("customer.index")}}">Customers</a>
           </div>
-          <x-button-new/>
-        </li>
-      </ul>
-
-      <ul>
-        <li class="flex items-center justify-between">
-          <div class="space-x-2 text-gray-500 dark:text-gray-300">
-            <i class="fa-solid fa-user"></i>
-            <a href="{{route("customer.index")}}">Customer</a>
-          </div>
-          <x-button-new/>
         </li>
       </ul>
 
@@ -60,6 +48,15 @@
             <i class="fa-solid fa-user"></i>
             <a href="{{route("supplier.index")}}">Supplier</a>
           </div>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-people-carry-box"></i>
+            <a href="{{route("inbound.index")}}">Inbound</a>
+          </div>
           <x-button-new/>
         </li>
       </ul>
@@ -67,12 +64,23 @@
       <ul>
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300">
-            <i class="fa-solid fa-list"></i>
-            <a href="{{route("cattegory.index")}}">Cattegory</a>
+            <i class="fa-solid fa-dolly"></i>
+            <a href="{{route("outbound.index")}}">Outbound</a>
           </div>
           <x-button-new/>
         </li>
       </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <div class="space-x-2 text-gray-500 dark:text-gray-300">
+            <i class="fa-solid fa-chart-line"></i>
+            <a href="{{route("statistic.index")}}">Statistics</a>
+          </div>
+          <x-button-new/>
+        </li>
+      </ul>
+
     </nav>
   </div>
 

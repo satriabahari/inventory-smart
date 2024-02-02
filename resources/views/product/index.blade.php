@@ -24,7 +24,7 @@
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->id }}</td>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->name }}</td>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->description }}</td>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->cattegory->name }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->category->name }}</td>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->price }}</td>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->stock }}</td>
                                 <td class="text-neutral-50 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-50 py-1 px-4 flex space-x-4">
@@ -38,9 +38,14 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @if ($datas->count() >= 9 )
+                        <div class="py-2 px-4">
+                            {{ $datas->links() }}
+                        </div>
+                    @endif
             </div>
         @else
             <x-data-not-found/>

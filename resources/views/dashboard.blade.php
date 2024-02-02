@@ -6,26 +6,26 @@
     </x-slot> --}}
     <section class="p-8">
         <div class="grid grid-cols-4 items-center justify-center gap-4">
-            <x-statistic title="Customers" count="{{$customers->count()}}" color="bg-blue-500" icon="fa-circle-user" iconColor="text-blue-500"/>
-            <x-statistic title="Products" count="{{$products->count()}}" color="bg-red-500" icon="fa-solid fa-box" iconColor="text-red-500"/>
-            <x-statistic title="Users" count="{{$users->count()}}" color="bg-green-500" icon="fa-circle-user" iconColor="text-green-500"/>
-            <x-statistic title="Cattegory" count="{{$cattegories->count()}}" color="bg-indigo-500" icon="fa-circle-user" iconColor="text-indigo-500"/>
+            <x-statistic title="Products" count="{{$products->count()}}" color="bg-blue-500" icon="fa-solid fa-box" iconColor="text-blue-500"/>
+            <x-statistic title="Categories" count="{{$categories->count()}}" color="bg-green-500" icon="fa-list" iconColor="text-green-500"/>
+            <x-statistic title="Customers" count="{{$customers->count()}}" color="bg-red-500" icon="fa-users" iconColor="text-red-500"/>
+            <x-statistic title="Suppliers" count="{{$suppliers->count()}}" color="bg-yellow-500" icon="fa-user" iconColor="text-yellow-500"/>
             
             <div class="col-span-2 container">
                 <div class="p-6 bg-gray-50 rounded-lg">
-                    {!! $productChart->container() !!}
+                    {!! $donutChart->container() !!}
                 </div>
             </div>
-            <script src="{{ $productChart->cdn() }}"></script>
-            {{ $productChart->script() }}
+            <script src="{{ $donutChart->cdn() }}"></script>
+            {{ $donutChart->script() }}
 
             <div class="col-span-2 container">
                 <div class="p-6 bg-gray-50 rounded-lg">
-                    {!! $statsChart->container() !!}
+                    {!! $polarAreaChart->container() !!}
                 </div>
             </div>
-            <script src="{{ $statsChart->cdn() }}"></script>
-            {{ $statsChart->script() }}
+            <script src="{{ $polarAreaChart->cdn() }}"></script>
+            {{ $polarAreaChart->script() }}
         </div>
     </section>
 
