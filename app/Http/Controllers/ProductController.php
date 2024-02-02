@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\ProductsChart;
 use App\Charts\StatsChart;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Cattegory;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        /*$datas = Product::orderBy('id', 'asc');
+        $datas = Product::with('category')->orderBy('id', 'asc');
 
         if(request()->has("search")){
             $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
@@ -28,9 +29,9 @@ class ProductController extends Controller
             } else {
                 $datas = $datas->get();
             }
-        }*/
-        $datas = Product::with('cattegory')->get();
-        return view('product.index', compact('datas'));
+        }
+        // $datas = Product::with('cattegory')::orderBy('id', 'asc')->get();
+        return view('product.index', ["datas" => $datas]);
     }
 
     /**
@@ -38,8 +39,8 @@ class ProductController extends Controller
      */
     public function create()
     {   
-        $categories = Cattegory::all();
-        return view('product.create', compact('categories'));
+        $categories = Category::all();
+        return view('product.create', ['categories' => $categories]);
     }
 
     /**
@@ -47,17 +48,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'cattegory_id' => 'required|exists:cattegories,id',
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
+        // $request->validate([
+        //     'cattegory_id' => 'required|exists:categories,id',
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required',
+        //     'stock' => 'required',
+        // ]);
+
+        Product::create([
+            'cattegory_id' => $request->cattegory_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'stock' => $request->stock
         ]);
 
-        Product::create($request->all());
-
-        return redirect()->route('product.index')->with('success', 'Product created successfully');
+        return redirect('/product');
     }
 
     /**
@@ -73,10 +80,13 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Product::findOrFail($id);
-        $cattegories = Cattegory::all();
+        $data = Product::find($id);
+        $cattegories = Category::all();
         
-        return view('product.edit', compact('data', 'cattegories'));
+        return view('product.edit', [
+            'data' => $data,
+            'cattegories' => $cattegories
+        ]);
     }
 
     /**
@@ -84,24 +94,32 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = Product::findOrFail($id);
+        // $data = Product::findOrFail($id);
         
 
-        $request->validate([
-            'cattegory_id' => 'required|exists:cattegories,id',
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'stock' => 'required|numeric',
+        // $request->validate([
+        //     'cattegory_id' => 'required|exists:cattegories,id',
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'price' => 'required|numeric',
+        //     'stock' => 'required|numeric',
+        // ]);
+
+        // $data->update($request->all());
+
+        Product::find($id)->update([
+            'cattegory_id' => $request->cattegory_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'stock' => $request->stock
         ]);
 
-        $data->update($request->all());
+        // DB::listen(function ($query) {
+        //     dump($query->sql, $query->bindings);
+        // });
 
-        DB::listen(function ($query) {
-            dump($query->sql, $query->bindings);
-        });
-
-        return redirect()->route('product.index')->with('success', 'Product updated successfully');
+        return redirect('/product');
     }
 
     /**

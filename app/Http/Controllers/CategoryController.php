@@ -3,29 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cattegory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CattegoryController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $datas = Cattegory::orderBy('id', 'asc');
+        $datas = Category::orderBy('id', 'asc');
 
         if(request()->has("search")){
-            $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(5);
+            $datas = $datas->where("name", "like", "%" . request()->get("search") . "%")->paginate(10);
         } else {
-            if($datas->count() > 5) {
-                $datas = $datas->paginate(4);;
+            if($datas->count() > 10) {
+                $datas = $datas->paginate(9);;
             } else {
                 $datas = $datas->get();
             }
         }
 
-        return view("cattegory.index", ["datas" => $datas]);
+        return view("category.index", ["datas" => $datas]);
     }
 
     /**
@@ -33,7 +33,7 @@ class CattegoryController extends Controller
      */
     public function create()
     {
-        return view("cattegory.create");
+        return view("category.create");
     }
 
     /**
@@ -41,10 +41,10 @@ class CattegoryController extends Controller
      */
     public function store(Request $request)
     {
-        Cattegory::create([
+        Category::create([
             "name" => $request->name
         ]);
-        return redirect("/cattegory");
+        return redirect("/category");
     }
 
     /**
@@ -60,8 +60,8 @@ class CattegoryController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Cattegory::find($id);
-        return view("cattegory.edit", ["data" => $data]);
+        $data = Category::find($id);
+        return view("category.edit", ["data" => $data]);
     }
 
     /**
@@ -69,10 +69,10 @@ class CattegoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Cattegory::find($id)->update([
+        Category::find($id)->update([
             "name" => $request->name
         ]);
-        return redirect("/cattegory");
+        return redirect("/category");
     }
 
     /**
@@ -80,7 +80,7 @@ class CattegoryController extends Controller
      */
     public function destroy(string $id)
     {
-        Cattegory::find($id)->delete();
-        return redirect("/cattegory");
+        Category::find($id)->delete();
+        return redirect("/category");
     }
 }

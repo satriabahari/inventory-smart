@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductMasukSeeder extends Seeder
+class InboundSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,29 +15,29 @@ class ProductMasukSeeder extends Seeder
     {
         for ($i = 0; $i < 5; $i++) {
 
-            DB::table("product_masuk")->insert([
+            DB::table("inbounds")->insert([
                 'product_id' => 1,
                 'supplier_id' => 1,
                 'stock' => 50,
-                'tanggal' => now()->toDateString(),
+                'date' => now()->toDateString(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            DB::table("product_masuk")->insert([
+            DB::table("inbounds")->insert([
                 'product_id' => 2,
                 'supplier_id' => 2,
                 'stock' => 75,
-                'tanggal' => now()->toDateString(),
+                'date' => now()->toDateString(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            DB::table("product_masuk")->insert([
+            DB::table("inbounds")->insert([
                 'product_id' => 3,
                 'supplier_id' => 3,
                 'stock' => 60,
-                'tanggal' => now()->toDateString(),
+                'date' => now()->toDateString(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

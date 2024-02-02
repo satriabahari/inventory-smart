@@ -4,7 +4,7 @@ namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class ProductsChart
+class DonutChart
 {
     protected $chart;
 
@@ -13,14 +13,17 @@ class ProductsChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart{
+    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
+    {
         return $this->chart->donutChart()
-            ->setTitle('Top 3 scorers of the team.')
-            ->setSubtitle('Season 2021.')
+            ->setTitle('Product Management')
+            // ->setSubtitle('Season 2021.')
             ->addData([
                 \app\Models\Product::count(),
+                \app\Models\Category::count(),
                 \app\Models\Customer::count(),
+                \app\Models\Supplier::count(),
             ])
-            ->setLabels(['Products', 'Customers']);
+            ->setLabels(['Products', 'Categories', 'Customers', 'Suppliers']);
     }
 }

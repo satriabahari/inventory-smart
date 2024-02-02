@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('cattegory_id')->unsigned();
+            $table->unsignedInteger('category_id')->unsigned();
 
             $table->string('name');
             $table->text('description');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('stock');
             $table->timestamps();
 
-            $table->foreign('cattegory_id')->references('id')->on('cattegories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
 
         });

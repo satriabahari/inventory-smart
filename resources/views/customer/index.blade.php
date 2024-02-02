@@ -3,7 +3,7 @@
         <div class="flex justify-between">
             <x-button :route="route('customer.create')" color="blue" text="Create" icon="fa-plus"/>
         </div>
-        @if (count($data) > 0)
+        @if (count($datas) > 0)
             <div class="flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2">
                 <table class="w-full table-auto">
                     <thead>
@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $item)
+                        @foreach ($datas as $item)
                             <tr>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $loop->iteration }}</td>
                                 <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $item->name }}</td>
@@ -38,6 +38,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if ($datas->count() >= 9 )
+                    <div class="py-2 px-4">
+                        {{ $datas->links() }}
+                    </div>
+                @endif
             </div>
         @else
             <x-data-not-found/>

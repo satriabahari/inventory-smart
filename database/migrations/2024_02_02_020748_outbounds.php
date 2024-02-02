@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_keluar', function (Blueprint $table) {
+        Schema::create('outbounds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('customer_id')->unsigned();
             $table->integer('stock');
-            $table->date('tanggal');
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_keluar');
+        Schema::dropIfExists('outbounds');
     }
 };

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['cattegory_id','name','description','price','stock'];
+    protected $fillable = ['category_id','name','description','price','stock'];
 
     protected $hidden = ['created_at','updated_at'];
 
-    public function cattegory()
+    public function category()
     {
-        return $this->belongsTo(Cattegory::class);
+        return $this->belongsTo(Category::class);
     }
 }

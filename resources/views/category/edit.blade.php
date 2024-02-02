@@ -5,7 +5,7 @@
             <h1 class="text-2xl font-bold mb-6 dark:text-gray-50">Edit Data</h1>
     
             <!-- Form -->
-            <form action="{{ route('cattegory.update', $data->id) }}" method="POST">
+            <form action="{{ route('category.update', $data->id) }}" method="POST">
                 @csrf
                 @method('PUT')
     
@@ -16,8 +16,9 @@
                   </div>
 
                 <div>
-                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">
-                        Simpan
+                    <button type="submit" class="flex items-center space-x-2 bg-blue-500 text-gray-50 dark:text-gray-200 py-2 px-4 rounded-md ">
+                        <p>Update</p>
+                        <i class="fa-solid fa-circle-check"></i>
                     </button>
                 </div>
             </form>

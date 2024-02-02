@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product_Keluar extends Model
+class Inbound extends Model
 {
-    protected $table = 'product_keluar';
-
-    protected $fillable = ['product_id','customer_id','stock','tanggal'];
+    protected $fillable = ['product_id','supplier_id','stock','date'];
 
     protected $hidden = ['created_at','updated_at'];
 
@@ -18,8 +16,8 @@ class Product_Keluar extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function customer()
+    public function supplier()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Supplier::class);
     }
 }

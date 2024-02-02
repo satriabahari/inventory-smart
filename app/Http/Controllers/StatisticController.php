@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\DonutChart;
+use App\Charts\LineChart;
 use App\Charts\PolarAreaChart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -11,12 +12,14 @@ use App\Models\Inbound;
 use App\Models\Outbound;
 use App\Models\Product;
 use App\Models\Supplier;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class StatisticController extends Controller
 {
-    public function index(DonutChart $donutChart, PolarAreaChart $polarAreaChart)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(DonutChart $donutChart, PolarAreaChart $polarAreaChart, LineChart $lineChart)
     {
         $categories = Category::all();
         $products = Product::all();
@@ -24,9 +27,10 @@ class DashboardController extends Controller
         $suppliers = Supplier::all();
         $inbounds = Inbound::all();
         $outbounds = Outbound::all();
-        return view('dashboard', [
+        return view('statistic.index', [
             "donutChart" => $donutChart->build(),
             "polarAreaChart" => $polarAreaChart->build(),
+            "lineChart" => $lineChart->build(),
             "categories" => $categories,
             "products" => $products,
             "customers" => $customers,

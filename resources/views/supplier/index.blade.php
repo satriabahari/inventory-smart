@@ -4,7 +4,7 @@
             <x-button :route="route('supplier.create')" color="blue" text="Create" icon="fa-plus"/>
         </div>
 
-        @if (count($suppliers) > 0)
+        @if (count($datas) > 0)
             <div class="flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2">
                 <table class="w-full table-auto">
                     <thead>
@@ -18,16 +18,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($suppliers as $supplier)
+                        @foreach ($datas as $data)
                             <tr>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $supplier->id }}</td>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $supplier->name }}</td>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $supplier->address }}</td>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $supplier->email }}</td>
-                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $supplier->phone }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->id }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->name }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->address }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->email }}</td>
+                                <td class="text-neutral-500 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-300 py-1 px-4 text-sm">{{ $data->phone }}</td>
                                 <td class="text-neutral-50 bg-neutral-50 dark:bg-gray-800 dark:text-neutral-50 py-1 px-4 flex space-x-4">
-                                    <x-button :route="route('supplier.edit', $supplier->id)" color="green" text="Edit" icon="fa-pen-to-square"/>
-                                    <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST">
+                                    <x-button :route="route('supplier.edit', $data->id)" color="green" text="Edit" icon="fa-pen-to-square"/>
+                                    <form action="{{ route('supplier.destroy', $data->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit">
@@ -39,9 +39,14 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if ($datas->count() >= 9 )
+                    <div class="py-2 px-4">
+                        {{ $datas->links() }}
+                    </div>
+                @endif
             </div>
         @else
-            <x-data-not-found/>
+        <x-data-not-found/>
         @endif
     </section>
 </x-app-layout>
