@@ -49,15 +49,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // $request->validate([
-        //     'cattegory_id' => 'required|exists:categories,id',
+        //    'category_id' => 'required|exists:categories,id',
         //     'name' => 'required',
         //     'description' => 'required',
         //     'price' => 'required',
         //     'stock' => 'required',
-        // ]);
+         //]);
 
         Product::create([
-            'cattegory_id' => $request->cattegory_id,
+            'category_id' => $request->category_id,
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
@@ -108,7 +108,7 @@ class ProductController extends Controller
         // $data->update($request->all());
 
         Product::find($id)->update([
-            'cattegory_id' => $request->cattegory_id,
+            'category_id' => $request->category_id,
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
