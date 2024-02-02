@@ -1,16 +1,14 @@
 <?php
 
-use App\Http\Controllers\CattegoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InboundController;
+use App\Http\Controllers\OutboundController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StockController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductMasukController;
-use App\Http\Controllers\ProductKeluarController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\SupplierController;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,14 +26,6 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
-// Route::get('/dashboard', [ProductController::class, 'productChart'])->name('dashboard');
-// Route::get('/dashboard', [ProductController::class, 'statsChart'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -45,9 +35,10 @@ Route::middleware('auth')->group(function () {
 Route::resource('dashboard', DashboardController::class)->middleware(['auth', 'verified']);
 Route::resource('product', ProductController::class);
 Route::resource('customer', CustomerController::class);
-Route::resource('cattegory', CattegoryController::class);
-Route::resource('product_masuk', ProductMasukController::class);
-Route::resource('product_keluar', ProductKeluarController::class);
+Route::resource('category', CategoryController::class);
+Route::resource('inbound', InboundController::class);
+Route::resource('outbound', OutboundController::class);
 Route::resource('supplier', SupplierController::class);
+Route::resource('statistic', StatisticController::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
