@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
             DB::table("products")->insert([
                 'name' => "baju",
                 'description' => "baju baru",
-                'cattegory_id' => 1,
+                'category_id' => 1,
                 'price' => 100000,
                 'stock' => 10,
                 'created_at' => now(),
@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
             DB::table("products")->insert([
                 'name' => "celana",
                 'description' => "celana baru",
-                'cattegory_id' => 2,
+                'category_id' => 2,
                 'price' => 300000,
                 'stock' => 20,
                 'created_at' => now(),
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
             DB::table("products")->insert([
                 'name' => "sepatu",
                 'description' => "sepatu baru",
-                'cattegory_id' => 3,
+                'category_id' => 3,
                 'price' => 350000,
                 'stock' => 25,
                 'created_at' => now(),
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
             DB::table("products")->insert([
                 'name' => "topi",
                 'description' => "topi baru",
-                'cattegory_id' => 4,
+                'category_id' => 4,
                 'price' => 50000,
                 'stock' => 15,
                 'created_at' => now(),
