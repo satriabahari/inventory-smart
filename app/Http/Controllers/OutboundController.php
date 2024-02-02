@@ -52,7 +52,7 @@ class OutboundController extends Controller
         $product = Product::find($request->product_id);
 
         if (!$product || $request->stock > $product->stock) {
-            return redirect('/outbound');
+            return redirect()->route('outbound.create')->with('error', 'Stock tidak mencukupi.');
         }
 
         // Jika stok mencukupi, simpan data produk keluar
@@ -103,7 +103,7 @@ class OutboundController extends Controller
 
             // Validasi stok mencukupi
             if ($request->stock > $product->stock) {
-                return redirect('/outbound');
+                return redirect()->route('outbound.edit', $id)->with('error', 'Stock tidak mencukupi.');
             }
 
             // Kurangkan stok yang baru
