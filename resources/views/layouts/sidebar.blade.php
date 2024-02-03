@@ -1,7 +1,7 @@
 
 <aside class="grid grid-rows-[4rem_3fr_1fr] text-gray-900 min-h-screen w-[225px] px-6 border-r border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-gray-50">
   <div class="flex justify-center items-center">
-    <h1 class="text-2xl uppercase">Study Club</h1>
+    <h1 class="text-lg uppercase font-medium">Inventory Smart</h1>
   </div>
 
   <div class="text-sm space-y-4 flex flex-col justify-center">

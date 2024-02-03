@@ -13,29 +13,12 @@ class SupplierSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 5; $i++) {
-
+        for ($i = 1; $i <= 35; $i++) {
             DB::table("suppliers")->insert([
-                'name' => "satria",
-                'address' => "Mendalo Asri",
-                'email' => "satria@gmail.com",
-                'phone' => "082183340920",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-            DB::table("suppliers")->insert([
-                'name' => "nurman",
-                'address' => "Talang Banjar",
-                'email' => "nurman@gmail.com",
-                'phone' => "082183659273",
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-            DB::table("suppliers")->insert([
-                'name' => "zidan",
-                'address' => "Mayang",
-                'email' => "zidan@gmail.com",
-                'phone' => "082165593696",
+                'name' => "Supplier " . $i,
+                'address' => "Address " . $i,
+                'email' => "supplier" . $i . "@gmail.com",
+                'phone' => "0821" . rand(100000000, 999999999),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
