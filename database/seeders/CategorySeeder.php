@@ -13,25 +13,35 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("categories")->insert([
-            'name' => "baju",
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table("categories")->insert([
-            'name' => "celana",
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table("categories")->insert([
-            'name' => "sepatu",
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table("categories")->insert([
-            'name' => "topi",
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $categories = [
+            'baju', 
+            'celana', 
+            'sepatu', 
+            'topi', 
+            'jaket',
+            'dress',
+            'kaos',
+            'rok',
+            'sandal',
+            'sweater',
+            'jeans',
+            'kemeja',
+            'tas',
+            'jam tangan',
+            'legging',
+            'blazer',
+            'setelan',
+            'piyama',
+            'cardigan',
+            'bikini',
+        ];
+
+        foreach ($categories as $category) {
+            DB::table('categories')->insert([
+                'name'       => $category,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }

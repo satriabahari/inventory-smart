@@ -12,35 +12,24 @@ class InboundSeeder extends Seeder
      * Run the database seeds.
      */
     public function run()
-    {
-        for ($i = 0; $i < 5; $i++) {
+    {   
+        $productsPerMonth = 10;
 
-            DB::table("inbounds")->insert([
-                'product_id' => 1,
-                'supplier_id' => 1,
-                'stock' => 50,
-                'date' => now()->toDateString(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        for ($month = 1; $month <= 12; $month++) {
+            for ($day = 1; $day <= $productsPerMonth; $day++) {
+                $product_id = (($day - 1) % 5) + 1;
 
-            DB::table("inbounds")->insert([
-                'product_id' => 2,
-                'supplier_id' => 2,
-                'stock' => 75,
-                'date' => now()->toDateString(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+                $date = now()->startOfMonth()->addMonths($month - 1)->addDays($day - 1);
 
-            DB::table("inbounds")->insert([
-                'product_id' => 3,
-                'supplier_id' => 3,
-                'stock' => 60,
-                'date' => now()->toDateString(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+                DB::table("inbounds")->insert([
+                    'product_id' => $product_id,
+                    'supplier_id' => $product_id, // Assuming the supplier_id logic is the same as product_id, change if needed
+                    'stock' => rand(5, 20),
+                    'date' => $date->toDateString(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }
