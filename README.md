@@ -78,48 +78,6 @@ Batch 2
             </dd>
         </dl>
     </dd>
-    <dt><h3>Customer & Supplier</h3></dt>
-    <dd>
-        <dl>
-            <dt><li>Tambah Customer</li></dt>
-            <dt><li>Ubah Customer</li></dt>
-            <dt><li>Hapus Customer</li></dt>
-            <dt><li>Tambah Supplier</li></dt>
-            <dt><li>Ubah Supplier</li></dt>
-            <dt><li>Hapus Supplier</li></dt>
-        </dl>
-    </dd>
-    <dt><h3>Stock Product</h3></dt>
-    <dd>
-        <dl>
-            <dt><li>Tambah Product</li></dt>
-            <dt><li>Ubah Product</li></dt>
-            <dt><li>Hapus Product</li></dt>
-            <dt><li>Deskripsi Product</li></dt>
-        </dl>
-    </dd>
-    <dt><h3>Product Masuk & Keluar</h3></dt>
-    <dd>
-        <dl>
-            <dt><li>Record Product Masuk</li></dt>
-            <dt><li>Record Product Keluar</li></dt>
-        </dl>
-    </dd>
-    <dt><h3>Kategori Product</h3></dt>
-    <dd>
-        <dl>
-            <dt><li>Tambah Kategori</li></dt>
-            <dt><li>Ubah Kategori</li></dt>
-            <dt><li>Hapus Kategori</li></dt>
-        </dl>
-    </dd>
-    <dt><h3>Statistik</h3></dt>
-    <dd>
-        <dl>
-            <dt><li>Grafik Product Masuk dan Keluar</li></dt>
-        </dl>
-    </dd>
-</dl>
 
 
 ## Guide
