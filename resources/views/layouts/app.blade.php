@@ -24,28 +24,27 @@
     darkMode = JSON.parse(localStorage.getItem('darkMode'));
     $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" x-cloak>
         <div x-bind:class="{'dark' : darkMode === true}" >
-            <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
-                <div class="fixed">
-                    @include('layouts.sidebar')
-                </div>
-                <div class="w-full min-h-screen ml-[225px]">
+            <div class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
+                <div class="">
                     @include('layouts.navigation')
-
-                    <!-- Page Heading -->
-                    {{-- @if (isset($header))
-                        <header class="bg-white dark:bg-gray-800 shadow">
-                            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {{ $header }}
-                            </div>
-                        </header>
-                    @endif --}}
-
-                    <!-- Page Content -->
-                    <main class="">
+                </div>
+                <div class="transition flex justify-between w-full min-h-screen">
+                    @include('layouts.sidebar')
+                    <main id="main-content" class="pt-16 ml-56 w-full">
                         {{ $slot }}
                     </main>
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        var sidebar = document.getElementById("sidebar");
+        var main = document.getElementById("main-content");
+        var isMarginSet = main.classList.contains("ml-56")
+        document.getElementById("toggleSidebar").addEventListener("click", function(event) {
+            event.preventDefault();
+            sidebar.classList.toggle("hidden")
+            main.classList.toggle("ml-56")
+        })
+    </script>
 </html>
