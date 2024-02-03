@@ -6,7 +6,7 @@ use App\Models\Inbound;
 use App\Models\Outbound;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class LineChart
+class AreaChart
 {
     protected $chart;
 
@@ -15,9 +15,8 @@ class LineChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\LineChart
+    public function build(): \ArielMejiaDev\LarapexCharts\AreaChart
     {
-        // Group inbound data by month and sum the stock values
         $inboundData = Inbound::selectRaw('MONTH(date) as month, SUM(stock) as total_stock')
             ->groupBy('month')
             ->pluck('total_stock', 'month')
@@ -31,7 +30,7 @@ class LineChart
 
         $months = range(1, 12); // Assuming data spans all 12 months
 
-        return $this->chart->lineChart()
+        return $this->chart->areaChart()
             ->setTitle('Stock Movement during 2024.')
             ->setSubtitle('Inbound vs Outbound stock.')
             ->addData('Inbound', array_values(array_replace(array_fill_keys($months, 0), $inboundData)))
