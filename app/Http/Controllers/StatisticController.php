@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\AreaChart;
+use App\Charts\BarChart;
 use App\Charts\DonutChart;
 use App\Charts\LineChart;
 use App\Charts\PolarAreaChart;
+use App\Charts\RadarChart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Customer;
@@ -19,7 +22,7 @@ class StatisticController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(DonutChart $donutChart, PolarAreaChart $polarAreaChart, LineChart $lineChart)
+    public function index(DonutChart $donutChart, PolarAreaChart $polarAreaChart, LineChart $lineChart, BarChart $barChart, RadarChart $radarChart, AreaChart $areaChart)
     {
         $categories = Category::all();
         $products = Product::all();
@@ -31,6 +34,9 @@ class StatisticController extends Controller
             "donutChart" => $donutChart->build(),
             "polarAreaChart" => $polarAreaChart->build(),
             "lineChart" => $lineChart->build(),
+            "barChart" => $barChart->build(),
+            "radarChart" => $radarChart->build(),
+            "areaChart" => $areaChart->build(),
             "categories" => $categories,
             "products" => $products,
             "customers" => $customers,
