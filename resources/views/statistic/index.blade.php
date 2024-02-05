@@ -1,8 +1,8 @@
 <x-app-layout>
   <section class="p-8">
-    <div class="grid grid-cols-2 items-center justify-center gap-4">
+    <div class="flex flex-col lg:grid grid-cols-2 items-center justify-center gap-4">
       <div class="container">
-        <div class="p-6 bg-gray-50 rounded-lg">
+        <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg">
             {!! $donutChart->container() !!}
         </div>
       </div>
@@ -10,7 +10,7 @@
       {{ $donutChart->script() }}
 
       <div class="container">
-          <div class="p-6 bg-gray-50 rounded-lg">
+          <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
               {!! $polarAreaChart->container() !!}
           </div>
       </div>
@@ -18,7 +18,7 @@
       {{ $polarAreaChart->script() }}
 
       <div class="container col-span-2">
-        <div class="p-6 bg-gray-50 rounded-lg">
+        <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
             {!! $areaChart->container() !!}
         </div>
     </div>
@@ -26,7 +26,7 @@
     {{ $areaChart->script() }}
 
       <div class="container col-span-2">
-          <div class="p-6 bg-gray-50 rounded-lg">
+          <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
               {!! $lineChart->container() !!}
           </div>
       </div>
@@ -34,7 +34,7 @@
       {{ $lineChart->script() }}
 
       <div class="container col-span-2">
-          <div class="p-6 bg-gray-50 rounded-lg">
+          <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
               {!! $barChart->container() !!}
           </div>
       </div>
@@ -42,7 +42,7 @@
       {{ $barChart->script() }}
 
       <div class="container col-span-2">
-          <div class="p-6 bg-gray-50 rounded-lg">
+          <div class="p-6 bg-gray-50 rounded-lg border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
               {!! $radarChart->container() !!}
           </div>
       </div>

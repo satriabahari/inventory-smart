@@ -1,10 +1,10 @@
 <x-app-layout>
-  <section class="h-full p-4 space-y-4">
+  <section class="min-h-full p-4 space-y-4">
     <div class="flex justify-between">
       <x-button :route="route('category.create')" color="blue" text="Create" icon="fa-plus"/>
     </div>
     @if (count($datas) > 0)
-      <div class="flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2">
+      <div class="overflow-x-auto flex flex-col justify-between h-full bg-neutral-50 dark:bg-gray-800 rounded-xl p-2 border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
         <table class="w-full table-fixed">
           <thead>
             <tr>
