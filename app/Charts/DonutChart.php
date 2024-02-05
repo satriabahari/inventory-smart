@@ -17,7 +17,6 @@ class DonutChart
     {
         return $this->chart->donutChart()
             ->setTitle('Product Management')
-            // ->setSubtitle('Season 2021.')
             ->addData([
                 \app\Models\Product::count(),
                 \app\Models\Category::count(),

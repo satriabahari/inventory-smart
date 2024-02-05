@@ -17,26 +17,23 @@ class LineChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        // Group inbound data by month and sum the stock values
         $inboundData = Inbound::selectRaw('MONTH(date) as month, SUM(stock) as total_stock')
             ->groupBy('month')
             ->pluck('total_stock', 'month')
             ->toArray();
 
-        // Group outbound data by month and sum the stock values
         $outboundData = Outbound::selectRaw('MONTH(date) as month, SUM(stock) as total_stock')
             ->groupBy('month')
             ->pluck('total_stock', 'month')
             ->toArray();
 
-        $months = range(1, 12); // Assuming data spans all 12 months
+        $months = range(1, 12); 
 
         return $this->chart->lineChart()
             ->setTitle('Stock Movement during 2024.')
             ->setSubtitle('Inbound vs Outbound stock.')
             ->addData('Inbound', array_values(array_replace(array_fill_keys($months, 0), $inboundData)))
             ->addData('Outbound', array_values(array_replace(array_fill_keys($months, 0), $outboundData)))
-            // ->setXAxis($months)
             ->setXAxis(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
     }
 }
