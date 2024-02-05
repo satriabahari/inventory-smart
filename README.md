@@ -2,7 +2,7 @@
 
 
 
-Repository ini berisi file project Study Club Sistem Informasi Unja
+Repository ini berisi file project Study Club Sistem Informasi Universitas Jambi
 Batch 2
 
 ## Anggota Kelompok
@@ -13,16 +13,28 @@ Batch 2
 
 
 ## Fitur Utama
+- **Product**
+- **Kategori Product (Category Product)**
 - **Pelanggan (Customer)**
 - **Pemasok (Supplier)**
-- **Product**
-- **Product Masuk**
-- **Product Keluar**
-- **Kategori Product (Category Product)**
-- **Statistik**
+
+- **Product Masuk (Inbound)**
+- **Product Keluar (Outbound)**
+- **Statistik (Statistic)**
 
 
 ## Progress
+
+- **Kelola Product**
+- [x] Tambah Product
+- [x] Ubah Product
+- [x] Hapus Product
+- [x] Deskripsi Product
+
+- **Kelola Kategori Product**
+- [x] Tambah Kategori
+- [x] Ubah Kategori
+- [x] Hapus Kategori
 
 - **Kelola Customer & Supplier**
 - [x] Tambah Customer
@@ -32,20 +44,9 @@ Batch 2
 - [x] Ubah Supplier
 - [x] Hapus Supplier
 
-- **Kelola Product**
-- [x] Tambah Product
-- [x] Ubah Product
-- [x] Hapus Product
-- [x] Deskripsi Product
-
 - **Stock Product Masuk & Keluar**
 - [x] Record Product Masuk
 - [x] Record Product Keluar
-
-- **Kelola Kategori Product**
-- [x] Tambah Kategori
-- [x] Ubah Kategori
-- [x] Hapus Kategori
 
 - **Statistik**
 - [x] Grafik Product Masuk dan Keluar
