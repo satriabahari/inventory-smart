@@ -1,5 +1,5 @@
 
-<aside id="sidebar" class="fixed z-40 grid grid-rows-[4fr_1fr] text-gray-900 min-h-screen w-[225px] px-6 border-r border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-gray-50">
+<aside id="sidebar" class="fixed z-40 grid grid-rows-[4fr_1fr] text-gray-900 min-h-screen w-[225px] px-6 border-r-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 dark:text-gray-50">
   <div class="text-sm space-y-4 flex flex-col justify-center">
     <h3 class="uppercase text-gray-900 dark:text-gray-50">Main Menu</h3>
     <nav class="space-y-5 ">
@@ -7,30 +7,130 @@
         <li class="flex items-center space-x-2 justify-between 
           
         ">
-          <div class="space-x-2 text-gray-500 dark:text-gray-300
-            @if (Route::is('dashboard.index'))
-            bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
-            @endif
-          ">
-            <i class="fa-solid fa-house"></i>
-            <a href="{{route("dashboard.index")}}">Dashboard</a>
-          </div>
-        </li>
-      </ul>
-      <ul>
-        <li class="flex items-center justify-between">
-          <div class="space-x-2 text-gray-500 dark:text-gray-300
-            @if (Route::is('product.index', 'product.create', 'product.edit'))
-            bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
-            @endif
-          ">
-            <i class="fa-solid fa-boxes-stacked"></i>
-            <a href="{{route("product.index")}}">Products</a>
-          </div>
+          <a href="{{route("dashboard.index")}}">
+
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('dashboard.index'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-house"></i>
+              <p>Dashboard</p>
+            </div>
+          </a>
         </li>
       </ul>
 
       <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("product.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('product.index', 'product.create', 'product.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <p>Products</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center space-x-2 justify-between 
+          
+        ">
+          <a href="{{route("category.index")}}">
+
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('category.index', 'category.create', 'category.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-list"></i>
+              <p>Category</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("customer.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('customer.index', 'customer.create', 'customer.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-users"></i>
+              <p>Customers</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("supplier.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('supplier.index', 'supplier.create', 'supplier.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-user"></i>
+              <p>Suppliers</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("inbound.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('inbound.index', 'inbound.create', 'inbound.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-people-carry-box"></i>
+              <p>inbounds</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("outbound.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('outbound.index', 'outbound.create', 'outbound.edit'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-dolly"></i>
+              <p>Outbounds</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="flex items-center justify-between">
+          <a href="{{route("statistic.index")}}">
+            <div class="flex items-center justify-center gap-x-2 text-gray-500 dark:text-gray-300
+              @if (Route::is('statistic.index'))
+              bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-700
+              @endif
+            ">
+              <i class="fa-solid fa-chart-line"></i>
+              <p>Statistics</p>
+            </div>
+          </a>
+          <x-button-new/>
+        </li>
+      </ul>
+
+      {{-- <ul>
         <li class="flex items-center justify-between">
           <div class="space-x-2 text-gray-500 dark:text-gray-300
             @if (Route::is('category.index', 'category.create', 'category.edit'))
@@ -109,7 +209,7 @@
           </div>
           <x-button-new/>
         </li>
-      </ul>
+      </ul> --}}
 
     </nav>
   </div>

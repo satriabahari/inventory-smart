@@ -1,6 +1,6 @@
 @props(['title', 'count', 'color', 'icon', 'iconColor'])
 
-<div class="bg-gray-50 rounded-lg w-full p-2 dark:bg-gray-700">
+<div class="bg-gray-50 rounded-lg w-full p-2 dark:bg-gray-800 border-2 border-gray-200 drop-shadow-lg dark:border-gray-700">
   {{-- <div class="grid grid-cols-2"> --}}
     <div class="flex justify-between">
       {{-- <div class="w-fit h-fit rounded-full bg-gray-300 dark:bg-gray-500">

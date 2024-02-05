@@ -4,14 +4,14 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot> --}}
-    <section class="p-8">
-        <div class="grid grid-cols-4 items-center justify-center gap-4">
+    <section class="p-4 lg:p-8">
+        <div class="flex flex-col lg:grid grid-cols-4 items-center justify-center gap-4">
             <x-statistic title="Products" count="{{$products->count()}}" color="bg-blue-500" icon="fa-solid fa-box" iconColor="text-blue-500"/>
             <x-statistic title="Categories" count="{{$categories->count()}}" color="bg-green-500" icon="fa-list" iconColor="text-green-500"/>
             <x-statistic title="Customers" count="{{$customers->count()}}" color="bg-red-500" icon="fa-users" iconColor="text-red-500"/>
             <x-statistic title="Suppliers" count="{{$suppliers->count()}}" color="bg-yellow-500" icon="fa-user" iconColor="text-yellow-500"/>
             
-            <div class="col-span-2 container">
+            <div class="col-span-2 container border-2 border-gray-200 drop-shadow-lg rounded-lg dark:border-gray-700">
                 <div class="p-6 bg-gray-50 rounded-lg">
                     {!! $donutChart->container() !!}
                 </div>
@@ -19,7 +19,7 @@
             <script src="{{ $donutChart->cdn() }}"></script>
             {{ $donutChart->script() }}
 
-            <div class="col-span-2 container">
+            <div class="col-span-2 container border-2 border-gray-200 drop-shadow-lg rounded-lg dark:border-gray-700">
                 <div class="p-6 bg-gray-50 rounded-lg">
                     {!! $polarAreaChart->container() !!}
                 </div>
